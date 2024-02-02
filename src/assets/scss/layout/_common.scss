@@ -1,13 +1,37 @@
 @use '../helpers/' as *;
 
 article {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.container {
+  position: relative;
+  overflow: hidden;
+}
+
+section {
+  width: 100%;
+  aspect-ratio: 1920/960;
+
+  @include labtop {
+    aspect-ratio: auto;
     width: 100%;
-    height: 100%;
-    margin: 0 auto;
+    height: 100vh;
+  }
 }
 
 .inner {
-    width: 100%;
-    height: 100%;
-    @include flex;
+  width: 100%;
+  height: 100%;
+  @include flex;
+}
+
+.close-btn {
+  width: remSet(50px);
+  height: remSet(50px);
+  cursor: pointer;
+  background: url('#{$path-image}/close-btn.png') no-repeat center / contain;
+  z-index: $z-popup;
 }
