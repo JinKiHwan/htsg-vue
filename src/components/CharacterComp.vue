@@ -13,7 +13,7 @@
                   <dl>
                     <dt class="character__name">
                       <img
-                        src="@/assets/img/character/Diaochan/name.png"
+                        src="@/assets/img/character/diaochan/name.png"
                         alt="초선 야메로" />
                     </dt>
                     <dd class="character__story">
@@ -35,7 +35,7 @@
                       <li>
                         <figure>
                           <img
-                            src="@/assets/img/character/Diaochan/skill_01.png"
+                            src="@/assets/img/character/diaochan/skill_01.png"
                             alt="스킬 1" />
                           <figcaption>
                             바람의
@@ -47,7 +47,7 @@
                       <li>
                         <figure>
                           <img
-                            src="@/assets/img/character/Diaochan/skill_02.png"
+                            src="@/assets/img/character/diaochan/skill_02.png"
                             alt="스킬 2" />
                           <figcaption>
                             유혹의
@@ -59,7 +59,7 @@
                       <li>
                         <figure>
                           <img
-                            src="@/assets/img/character/Diaochan/skill_03.png"
+                            src="@/assets/img/character/diaochan/skill_03.png"
                             alt="스킬 3" />
                           <figcaption>멘탈 공격</figcaption>
                         </figure>
@@ -67,7 +67,7 @@
                       <li>
                         <figure>
                           <img
-                            src="@/assets/img/character/Diaochan/skill_04.png"
+                            src="@/assets/img/character/diaochan/skill_04.png"
                             alt="스킬 4" />
                           <figcaption>
                             아찔한
@@ -172,6 +172,8 @@
 </template>
 
 <script>
+import charInfo from '../js/charData';
+
 export default {
   name: 'CharacterComp',
 
@@ -195,6 +197,7 @@ export default {
         'liubei',
         'zhangfei',
       ],
+      charInfo: charInfo,
     };
   },
 };
