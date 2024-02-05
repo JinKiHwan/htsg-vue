@@ -10,66 +10,18 @@
           </h2>
         </div>
 
-        <div class="gallery__swiper swiper">
-          <ul class="swiper-wrapper">
-            <li class="swiper-slide">
-              <img
-                src="@/assets/img/gallery/gallery-img01.webp"
-                alt="현타삼국지" />
-            </li>
-            <li class="swiper-slide">
-              <img
-                src="@/assets/img/gallery/gallery-img02.webp"
-                alt="현타삼국지" />
-            </li>
-            <li class="swiper-slide">
-              <img
-                src="@/assets/img/gallery/gallery-img03.webp"
-                alt="현타삼국지" />
-            </li>
-            <li class="swiper-slide">
-              <img
-                src="@/assets/img/gallery/gallery-img04.webp"
-                alt="현타삼국지" />
-            </li>
-            <li class="swiper-slide">
-              <img
-                src="@/assets/img/gallery/gallery-img05.webp"
-                alt="현타삼국지" />
-            </li>
-          </ul>
-        </div>
-
-        <div class="gallery__thumSwiper swiper">
-          <ul class="swiper-wrapper">
-            <li class="swiper-slide">
-              <img
-                src="@/assets/img/gallery/gallery-thum-img01.webp"
-                alt="현타삼국지" />
-            </li>
-            <li class="swiper-slide">
-              <img
-                src="@/assets/img/gallery/gallery-thum-img02.webp"
-                alt="현타삼국지" />
-            </li>
-            <li class="swiper-slide">
-              <img
-                src="@/assets/img/gallery/gallery-thum-img03.webp"
-                alt="현타삼국지" />
-            </li>
-            <li class="swiper-slide">
-              <img
-                src="@/assets/img/gallery/gallery-thum-img04.webp"
-                alt="현타삼국지" />
-            </li>
-            <li class="swiper-slide">
-              <img
-                src="@/assets/img/gallery/gallery-thum-img05.webp"
-                alt="현타삼국지" />
-            </li>
-          </ul>
-        </div>
-        <div class="gallery__pagi"></div>
+      
+        <swiper :navigation="true" :modules="modules" class="mySwiper">
+          <swiper-slide>Slide 1</swiper-slide>          
+          <swiper-slide>Slide 2</swiper-slide>
+          <swiper-slide>Slide 3</swiper-slide>
+          <swiper-slide>Slide 4</swiper-slide>
+          <swiper-slide>Slide 5</swiper-slide>
+          <swiper-slide>Slide 6</swiper-slide>
+          <swiper-slide>Slide 7</swiper-slide>
+          <swiper-slide>Slide 8</swiper-slide>
+          <swiper-slide>Slide 9</swiper-slide>
+        </swiper>
       </div>
 
       <div class="gallery__sw-next gallery-nav">
@@ -87,8 +39,25 @@
 </template>
 
 <script>
+ // Import Swiper Vue.js components
+ import { Swiper, SwiperSlide } from 'swiper/vue';
+
+// Import Swiper styles
+import 'swiper/css';
+
+import 'swiper/css/navigation';
+
+
+// import required modules
+//import { Navigation } from 'swiper/modules';  
+
+
 export default {
   name: 'GalleryComp',
+  components:	{
+       Swiper,
+       SwiperSlide
+	},
 };
 </script>
 
