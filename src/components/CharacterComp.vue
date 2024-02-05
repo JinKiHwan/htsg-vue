@@ -5,7 +5,7 @@
         <div class="character__swiper" v-if="swiperOn == true">
           <ul class="swiper-wrapper">
             <li class="swiper-slide" v-for="(a, i) in charInfo" :key="i">
-              <Transition v-if="slideIndex == i" name="">
+              <Transition v-if="slideIndex == i" name="hero">
                 <div class="character__slide-wrap">
                   <div :class="`character__bg ${charInfo[i].charName}`">
                     <video
@@ -122,10 +122,16 @@
           </a>
 
           <div class="character__swiper-btn">
-            <a href="javascript:void(0)" class="character__next">
+            <a
+              href="javascript:void(0)"
+              class="character__next"
+              @click="nextSlide">
               <img src="@/assets/img/character/char-next.png" alt="" />
             </a>
-            <a href="javascript:void(0)" class="character__prev">
+            <a
+              href="javascript:void(0)"
+              class="character__prev"
+              @click="prevSlide">
               <img src="@/assets/img/character/char-prev.png" alt="" />
             </a>
           </div>
@@ -203,10 +209,32 @@ export default {
       swiperOn: false,
     };
   },
+
+  methods: {
+    nextSlide() {
+      if (this.slideIndex < 6) {
+        this.slideIndex++;
+      }
+    },
+    prevSlide() {
+      if (this.slideIndex > 0) {
+        this.slideIndex--;
+      }
+    },
+  },
 };
 </script>
 
 <style lang="scss" scoped>
+.hero-enter-active,
+.hero-leave-active {
+  transition: opacity 0.5s ease;
+}
+.hero-enter-from,
+.hero.leave-to {
+  opacity: 0;
+}
+
 .charSwiper-enter-active,
 .charSwiper-leave-active {
   transition: opacity 0.5s;
@@ -222,7 +250,7 @@ export default {
   padding-top: remSet(130px);
   padding-bottom: remSet(100px);
   aspect-ratio: auto;
-  height: 100vh;
+  height: 120vh;
 
   @include labtop {
     aspect-ratio: auto;
@@ -795,48 +823,6 @@ export default {
         }
       }
     }
-<<<<<<< Updated upstream
-
-    /* &.diaochan {
-            background-image: url('#{$path-image}/character/diaochan/bg.png');
-
-            iframe {
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                object-fit: cover;
-                left: 0;
-                top: 0;
-                z-index: -1;
-                pointer-events: none;
-            }
-        }
-
-        &.lvbu {
-            background-image: url('#{$path-image}/character/lvbu/bg.png');
-        }
-
-        &.zhugeliang {
-            background-image: url('#{$path-image}/character/zhugeliang/bg.png');
-        }
-
-        &.zhaoyun {
-            background-image: url('#{$path-image}/character/zhaoyun/bg.png');
-        }
-
-        &.guanyu {
-            background-image: url('#{$path-image}/character/guanyu/bg.png');
-        }
-
-        &.liubei {
-            background-image: url('#{$path-image}/character/liubei/bg.png');
-        }
-
-        &.zhangfei {
-            background-image: url('#{$path-image}/character/zhangfei/bg.png');
-        } */
-=======
->>>>>>> Stashed changes
   }
 
   &__info {

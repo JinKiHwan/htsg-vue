@@ -100,11 +100,11 @@ export default {
 
   &__logo {
     margin-bottom: remSet(25px);
-    opacity: 0;
-    transform: scale(0.95);
+    //opacity: 0;
+    //transform: scale(0.95);
 
     max-width: remSet(588px);
-    width: 30%;
+    //width: 30%;
 
     @include mobile {
       width: 100%;
