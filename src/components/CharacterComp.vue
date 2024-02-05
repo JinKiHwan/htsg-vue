@@ -786,7 +786,7 @@ export default {
     }
 
     /* &.diaochan {
-            background-image: url('#{$path-image}/character/Diaochan/bg.png');
+            background-image: url('#{$path-image}/character/diaochan/bg.png');
 
             iframe {
                 width: 100%;
@@ -921,7 +921,7 @@ export default {
       align-items: center;
 
       &.diaochan {
-        background-image: url('#{$path-image}/character/Diaochan/skill-txt.png');
+        background-image: url('#{$path-image}/character/diaochan/skill-txt.png');
       }
 
       &.lvbu {
