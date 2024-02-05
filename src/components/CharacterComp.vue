@@ -1,124 +1,136 @@
 <template>
   <section class="character" id="character">
     <div class="character__inner">
-      <div class="character__swiper">
-        <ul class="swiper-wrapper">
-          <li class="swiper-slide">
-            <div class="character__slide-wrap">
-              <div class="character__bg diaochan">
-                <video id="diaochanBg" muted playsinline loop></video>
-              </div>
-              <div class="character__info">
-                <div class="character__wrap">
-                  <dl>
-                    <dt class="character__name">
-                      <img
-                        src="@/assets/img/character/diaochan/name.png"
-                        alt="초선 야메로" />
-                    </dt>
-                    <dd class="character__story">
-                      양아버지이자 감독이었던 거장 왕윤의
-                      <br />
-                      실화 스토리를 내세운 막장드라마
-                      <br />
-                      “아버지와 양아들”에 출현해 데뷔한 첫 작품으로
-                      <br />
-                      여우 주연상을 받으며 스타덤에 오르게 된다.
-                    </dd>
-                  </dl>
-                  <div class="character__skill">
-                    <span class="character__skill-txt diaochan"
-                      >캐릭터 스킬</span
-                    >
-
-                    <ul class="character__skill-list">
-                      <li>
-                        <figure>
-                          <img
-                            src="@/assets/img/character/diaochan/skill_01.png"
-                            alt="스킬 1" />
-                          <figcaption>
-                            바람의
-                            <br />
-                            제로투
-                          </figcaption>
-                        </figure>
-                      </li>
-                      <li>
-                        <figure>
-                          <img
-                            src="@/assets/img/character/diaochan/skill_02.png"
-                            alt="스킬 2" />
-                          <figcaption>
-                            유혹의
-                            <br />
-                            몸놀림
-                          </figcaption>
-                        </figure>
-                      </li>
-                      <li>
-                        <figure>
-                          <img
-                            src="@/assets/img/character/diaochan/skill_03.png"
-                            alt="스킬 3" />
-                          <figcaption>멘탈 공격</figcaption>
-                        </figure>
-                      </li>
-                      <li>
-                        <figure>
-                          <img
-                            src="@/assets/img/character/diaochan/skill_04.png"
-                            alt="스킬 4" />
-                          <figcaption>
-                            아찔한
-                            <br />
-                            유혹
-                          </figcaption>
-                        </figure>
-                      </li>
-                    </ul>
+      <Transition name="charSwiper">
+        <div class="character__swiper" v-if="swiperOn == true">
+          <ul class="swiper-wrapper">
+            <li class="swiper-slide" v-for="(a, i) in charInfo" :key="i">
+              <Transition v-if="slideIndex == i" name="">
+                <div class="character__slide-wrap">
+                  <div :class="`character__bg ${charInfo[i].charName}`">
+                    <video
+                      :src="
+                        require(`@/assets/img/character/${charInfo[i].charName}/pc-bg.mp4`)
+                      "
+                      muted
+                      playsinline
+                      loop
+                      autoplay></video>
                   </div>
+                  <div class="character__info">
+                    <div class="character__wrap">
+                      <dl>
+                        <dt class="character__name">
+                          <img
+                            :src="
+                              require(`@/assets/img/character/${charInfo[i].charName}/name.png`)
+                            "
+                            :alt="`${charInfo[i].koName}`" />
+                        </dt>
+                        <dd class="character__story">
+                          {{ charInfo[i].story }}
+                        </dd>
+                      </dl>
+                      <div class="character__skill">
+                        <span
+                          :class="`character__skill-txt ${charInfo[i].charName}`"
+                          >캐릭터 스킬</span
+                        >
 
-                  <div class="character__videoBtn">
-                    <a href="https://youtu.be/qG64QXHB12U" target="_blank">
-                      <img
-                        src="@/assets/img/character/character-viewBtn.png"
-                        alt="캐릭터 영상보기"
-                        class="pcBtn" />
-                      <img
-                        src="@/assets/img/character/mo/character-viewBtn.png"
-                        alt="캐릭터 영상보기"
-                        class="mobileBtn" />
-                    </a>
+                        <ul class="character__skill-list">
+                          <li>
+                            <figure>
+                              <img
+                                :src="
+                                  require(`@/assets/img/character/${charInfo[i].charName}/skill_01.png`)
+                                "
+                                alt="스킬 1" />
+                              <figcaption>
+                                {{ charInfo[i].skil1 }}
+                              </figcaption>
+                            </figure>
+                          </li>
+                          <li>
+                            <figure>
+                              <img
+                                :src="
+                                  require(`@/assets/img/character/${charInfo[i].charName}/skill_02.png`)
+                                "
+                                alt="스킬 2" />
+                              <figcaption>
+                                {{ charInfo[i].skil2 }}
+                              </figcaption>
+                            </figure>
+                          </li>
+                          <li>
+                            <figure>
+                              <img
+                                :src="
+                                  require(`@/assets/img/character/${charInfo[i].charName}/skill_03.png`)
+                                "
+                                alt="스킬 3" />
+                              <figcaption>{{ charInfo[i].skil3 }}</figcaption>
+                            </figure>
+                          </li>
+                          <li>
+                            <figure>
+                              <img
+                                :src="
+                                  require(`@/assets/img/character/${charInfo[i].charName}/skill_04.png`)
+                                "
+                                alt="스킬 4" />
+                              <figcaption>
+                                {{ charInfo[i].skil4 }}
+                              </figcaption>
+                            </figure>
+                          </li>
+                        </ul>
+                      </div>
+
+                      <div class="character__videoBtn">
+                        <a href="https://youtu.be/qG64QXHB12U" target="_blank">
+                          <img
+                            src="@/assets/img/character/character-viewBtn.png"
+                            alt="캐릭터 영상보기"
+                            class="pcBtn" />
+                          <img
+                            src="@/assets/img/character/mo/character-viewBtn.png"
+                            alt="캐릭터 영상보기"
+                            class="mobileBtn" />
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </li>
-        </ul>
+              </Transition>
+            </li>
+          </ul>
 
-        <a href="javascript:void(0)" class="character__close js-char-close">
-          <picture>
-            <source
-              srcset="@/assets/img/character/mo/char-close.png"
-              media="(max-width:1024px)" />
-            <source srcset="@/assets/img/character/char-close.png" />
-            <img
-              src="@/assets/img/character/char-close.png"
-              alt="캐릭터 스와이퍼 닫기" />
-          </picture>
-        </a>
+          <a
+            href="javascript:void(0)"
+            class="character__close"
+            @click="swiperOn = false">
+            <picture>
+              <source
+                srcset="@/assets/img/character/mo/char-close.png"
+                media="(max-width:1024px)" />
+              <source srcset="@/assets/img/character/char-close.png" />
+              <img
+                src="@/assets/img/character/char-close.png"
+                alt="캐릭터 스와이퍼 닫기" />
+            </picture>
+          </a>
 
-        <div class="character__swiper-btn">
-          <a href="javascript:void(0)" class="character__next">
-            <img src="@/assets/img/character/char-next.png" alt="" />
-          </a>
-          <a href="javascript:void(0)" class="character__prev">
-            <img src="@/assets/img/character/char-prev.png" alt="" />
-          </a>
+          <div class="character__swiper-btn">
+            <a href="javascript:void(0)" class="character__next">
+              <img src="@/assets/img/character/char-next.png" alt="" />
+            </a>
+            <a href="javascript:void(0)" class="character__prev">
+              <img src="@/assets/img/character/char-prev.png" alt="" />
+            </a>
+          </div>
         </div>
-      </div>
-
+      </Transition>
       <div class="character__tit">
         <h2>
           <picture>
@@ -141,28 +153,35 @@
       <ul class="character__list" id="charTab">
         <li
           class="swiper-pagination-bullet"
-          v-for="(a, i) in charName"
+          v-for="(a, i) in charInfo"
           :key="i">
           <a href="javascript:void(0)">
-            <div class="character__label">
+            <div
+              class="character__label"
+              @click="
+                swiperOn = true;
+                slideIndex = i;
+              ">
               <i class="char-ico"></i>
-              <span class="char-name">{{ charName[i] }}</span>
+              <span class="char-name">{{ charInfo[i].koName }}</span>
             </div>
           </a>
           <figure>
             <picture>
               <source
                 :srcset="
-                  require(`@/assets/img/character/mo/${charClass[i]}.png`)
+                  require(`@/assets/img/character/mo/${charInfo[i].charName}.png`)
                 "
                 media="(max-width:1024px)" />
               <source
                 :srcset="
-                  require(`@/assets/img/character/${charClass[i]}.png`)
+                  require(`@/assets/img/character/${charInfo[i].charName}.png`)
                 " />
               <img
-                :src="require(`@/assets/img/character/${charClass[i]}.png`)"
-                :alt="`${charClass[i]}`" />
+                :src="
+                  require(`@/assets/img/character/${charInfo[i].charName}.png`)
+                "
+                :alt="`${charInfo[i].charName}`" />
             </picture>
           </figure>
         </li>
@@ -179,31 +198,23 @@ export default {
 
   data() {
     return {
-      charName: [
-        '초선 야메로',
-        '우주최강 월드스타',
-        '제갈슈타인',
-        '신들린 컨트롤',
-        '해결사 관실장',
-        '아빠의 쇼맨십',
-        '아이돌 지망생',
-      ],
-      charClass: [
-        'diaochan',
-        'lvbu',
-        'zhugeliang',
-        'zhaoyun',
-        'guanyu',
-        'liubei',
-        'zhangfei',
-      ],
       charInfo: charInfo,
+      slideIndex: 7,
+      swiperOn: false,
     };
   },
 };
 </script>
 
 <style lang="scss" scoped>
+.charSwiper-enter-active,
+.charSwiper-leave-active {
+  transition: opacity 0.5s;
+}
+.charSwiper-enter,
+.charSwiper-leave-to {
+  opacity: 0;
+}
 .character {
   background: url('#{$path-image}/character/character-bg.webp') no-repeat
     center/cover;
@@ -714,17 +725,17 @@ export default {
     left: 0;
     top: 0;
     opacity: 1;
-    pointer-events: none;
+    //pointer-events: none;
     transition: opacity 0.3s;
 
     @include mobile {
       z-index: 11;
     }
 
-    &.show {
+    /* &.show {
       opacity: 1;
       pointer-events: auto;
-    }
+    } */
   }
   .swiper-wrapper {
     width: 100%;
@@ -784,6 +795,7 @@ export default {
         }
       }
     }
+<<<<<<< Updated upstream
 
     /* &.diaochan {
             background-image: url('#{$path-image}/character/diaochan/bg.png');
@@ -823,6 +835,8 @@ export default {
         &.zhangfei {
             background-image: url('#{$path-image}/character/zhangfei/bg.png');
         } */
+=======
+>>>>>>> Stashed changes
   }
 
   &__info {
@@ -878,6 +892,7 @@ export default {
     line-height: 1.3;
     letter-spacing: -1px;
     margin-bottom: remSet(50px);
+    white-space: pre-wrap;
 
     @include mobile {
       font-size: remSet(28px);
@@ -969,6 +984,7 @@ export default {
           color: #5a4c54;
           font-weight: 600;
           line-height: 1.3;
+          white-space: pre-line;
 
           @include mobile {
             font-size: remSet(22px);

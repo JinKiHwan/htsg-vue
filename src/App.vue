@@ -1,7 +1,7 @@
 <template>
   <HeaderComp />
-  <MainComp />
-  <CharacterComp />
+  <MainComp :isDesktop="isDesktop" />
+  <CharacterComp :isDesktop="isDesktop" />
 </template>
 
 <script>
@@ -11,6 +11,11 @@ import CharacterComp from './components/CharacterComp.vue';
 
 export default {
   name: 'App',
+  data() {
+    return {
+      isDesktop: window.innerWidth > 1024,
+    };
+  },
   components: {
     HeaderComp,
     MainComp,
